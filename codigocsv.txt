@@ -1,0 +1,45 @@
+from google.colab import files
+uploaded = files.upload()
+covid = pd.read_csv(io.BytesIO(uploaded['Covid_ene.csv']),delimiter=';')
+#print(covid)
+print(covid.shape)
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+ruta = "/content/drive/MyDrive/Práctica/Covid_tri.csv"
+covid = pd.read_csv(ruta,delimiter=';')
+#covid = covid.fillna(0)
+
+#x=[datetime.strptime(date, "%d/%m/%Y").date() for date in covid.fecha]
+
+# Crear un dataset para graficar comparativa entre países.
+pbl=pd.DataFrame()
+pbl['pais']=covid['ubicacion']
+pbl['poblacion']=covid['poblacion']
+pobli= pbl.drop_duplicates()
+poblaciong=pobli.reset_index(drop=True)
+
+# Función para obtener los valores máximos
+def valmax(lista, cantidad):
+    a=[x for x in lista if math.isnan(x) == False]
+    lista= sorted(list(set(a)), reverse=True)[:cantidad]
+    return lista
+
+#Función para obtener los valores mínimos
+def valmin(lista, cantidad):
+    a=[x for x in lista if math.isnan(x) == False]
+    lista=sorted(list(set(lista)))[:cantidad]
+    return lista
+
+max=valmax(poblaciong.poblacion,5)
+min=valmin(poblaciong.poblacion,5)
+
+posiciones=[]
+
+resul=[poblaciong.loc[poblaciong['poblacion'] == max[i]] for i in range(5)]
+print(resul)
+
+
+#res=[set(poblaciong.index[poblaciong['poblacion'] == max[i]].tolist()) for i in range(len(max))]
+#res
