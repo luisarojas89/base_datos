@@ -43,3 +43,10 @@ print(resul)
 
 #res=[set(poblaciong.index[poblaciong['poblacion'] == max[i]].tolist()) for i in range(len(max))]
 #res
+
+reporte = covid[['fecha', 'casos_totales', 'total_pruebas', 'total_muertes']]
+
+
+paises= covid.groupby("ubicacion")['casos_totales','nuevas_muertes','nuevos_casos'].agg(max).reset_index()
+paises.head()
+
