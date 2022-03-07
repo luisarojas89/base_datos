@@ -1,3 +1,0 @@
-Our World in Data, “Our World in Data - COVID-19.” Kaggle, 2022, doi: 10.34740/KAGGLE/DSV/3051745.
-https://github.com/owid/covid-19-data/tree/master/public/data
-https://ourworldindata.org/explorers/coronavirus-data-explorer?tab=map&facet=none&pickerSort=desc&pickerMetric=median_age&Interval=7-day+rolling+average&Relative+to+Population=true&Color+by+test+positivity=false&country=USA~ITA~FRA~JPN~AFG~LVA~HRV~ESP&Metric=Confirmed+deaths
